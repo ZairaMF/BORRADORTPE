@@ -1,0 +1,29 @@
+
+<div>
+    <h3>Listado de Viajes</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+   
+                <th>Origen</th>
+                <th>Destino</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($viajes as $viaje): ?> 
+    <tr>
+        <td><?php echo $viaje->fecha; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
+        <td><?php echo $viaje->origen; ?></td>
+        <td><?php echo $viaje->destino; ?></td>
+        <td>
+            <a href="editarViaje/<?php echo $viaje->ID_viaje; ?>">Editar</a>
+            <a  href="<?= BASE_URL ?>eliminar/<?php echo $viaje->ID_viaje; ?>">Eliminar</a>
+            <a href="<?= BASE_URL ?>verMasViajes/<?= $viaje->ID_viaje ?>">Ver Más</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
