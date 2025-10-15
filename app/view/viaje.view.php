@@ -11,6 +11,9 @@ class viajeView{
     function formEditarViaje($ID_viaje, $viaje, $conductor, $conductores){
       require_once 'templates/viajes/formEditarViaje.phtml';
     }
+    function viajeDetalles($viaje, $conductor){
+        require_once 'templates/viajes/viajeDetalle.phtml';
+    }
     function mostrarErrores(){
         echo "error";
     }

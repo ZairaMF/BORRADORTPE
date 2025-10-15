@@ -13,7 +13,7 @@ if (!empty( $_GET['action'])) {
 
 // parsea la accion para separar accion real de parametros
 $params = explode('/', $action);
-$res = new Response();
+//$res = new Response();
 
 switch ($params[0]) {
    case 'listar':
@@ -33,16 +33,18 @@ switch ($params[0]) {
     $controller->addViaje();
     break;
 
+    //Edita el viaje por ID
     case 'editarViaje':
         $controller = new TaskController();
         $controller->mostrarformEditViaje($params[1]);
         break;
+    // Toma los datos pero no muestra nada
     case 'update':
         $controller = new TaskController();
         $controller->updateViajes($params[1]);
         break;
 
-    case 'showLogin':
+    /*case 'showLogin':
         $controller = new AuthController($res);
         $controller->showLogin();
         break;
@@ -54,7 +56,7 @@ switch ($params[0]) {
         $controller = new AuthController($res);
         $controller->logout();
         break;
-
+*/
     default: 
         echo "404 Page Not Found";
         break;
