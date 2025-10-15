@@ -15,12 +15,15 @@
             <input type="text" id="destino" name="destino" required>
         </div>
         <div class="col1">
-            <label for="ID_conductor">Conductores:</label>
-            <select name="ID_conductor" required>
-                <?php foreach ($conductor as $c): ?>
-                    <option value="<?= $c->ID_conductor ?>"><?= $c->nombre ?> - <?= $c->vehiculo ?></option>
-                <?php endforeach; ?>
-            </select>
+            <label for="ID_conductor">Conductor</label>
+    <select name="ID_conductor" id="ID_conductor" required>
+        <option value="">-- Seleccionar Conductor --</option>
+        <?php foreach ($conductores as $conductor): ?>
+            <option value="<?= $conductor->ID_conductor ?>">
+                <?= htmlspecialchars($conductor->nombre) ?> — <?= htmlspecialchars($conductor->vehiculo) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
         </div>
         <div class="col1">
             <button type="submit">Agregar Viaje</button>

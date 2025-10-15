@@ -1,6 +1,7 @@
 <?php
 require_once './app/model/viaje.model.php';
 require_once './app/view/viaje.view.php';
+require_once './app/model/conductor.model.php';
 
 define('MAX_PRIORITY', 5);
 
@@ -26,8 +27,9 @@ class TaskController
 
     public function mostrarformViajes()
     {
-        $conductor = $this->model->getConductor();
-        $this->view->formularioViaje($conductor);
+        $conductorModel = new conductorModel();
+        $conductores = $conductorModel->getConductor();
+        $this->view->formularioViaje($conductores);
     }
     public function addViaje()
     {

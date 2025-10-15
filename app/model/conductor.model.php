@@ -23,9 +23,9 @@ function getConductorById($ID_conductor){
 
         return $conductor;
 }
-function agregarConductor($ID_conductor, $nombre, $vehiculo){
-       $query = $this->db->prepare("INSERT INTO conductor(ID_conductor, nombre, vehiculo) VALUES(?,?,?)");
-        $query->execute([$ID_conductor, $nombre, $vehiculo]);
+function agregarConductor($nombre, $vehiculo){
+       $query = $this->db->prepare("INSERT INTO conductor(nombre, vehiculo) VALUES(?,?)");
+        $query->execute([$nombre, $vehiculo]);
           $ID_conductor = $this->db->lastInsertId(); 
         return $ID_conductor;
 }
