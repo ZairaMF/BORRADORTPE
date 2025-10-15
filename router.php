@@ -11,6 +11,7 @@
         $action = $_GET['action'];
     }
 
+    
     // parsea la accion para separar accion real de parametros
     $params = explode('/', $action);
     //$res = new Response();
@@ -44,6 +45,18 @@
             $controller->updateViajes($params[1]);
             break;
 
+
+        //Elimina Viaje
+        case 'eliminar':
+            $controller = new TaskController();
+            $controller->eliminarViaje($params[1]);
+            break;
+
+        // Ver mas viajeDetalle
+        case 'verMasViajes':
+            $controller = new TaskController();
+            $controller->mostrarViaje($params[1]);
+            break;
         /*case 'showLogin':
             $controller = new AuthController($res);
             $controller->showLogin();

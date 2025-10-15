@@ -3,8 +3,6 @@ require_once './app/model/viaje.model.php';
 require_once './app/view/viaje.view.php';
 require_once './app/model/conductor.model.php';
 
-define('MAX_PRIORITY', 5);
-
 class TaskController
 {
     private $model;
