@@ -14,9 +14,9 @@ class viajeView{
     function viajeDetalles($viaje, $conductor){
         require_once 'templates/viajes/viajeDetalle.phtml';
     }
-    function mostrarErrores(){
-        echo "error";
-    }
+  function mostrarErrores($mensaje){
+    echo "<div class='error'>$mensaje</div>";
+}
 }
 
 ?>

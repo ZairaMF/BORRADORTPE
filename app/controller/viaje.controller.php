@@ -33,7 +33,7 @@ class TaskController
             return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $ID_viaje");
         }
         $ID_conductor = $viaje->ID_conductor;
-        $conductor = $this->model->verConductorById($ID_conductor);
+        $conductor = $this->model->getConductorById($ID_conductor);
        return $this->view->viajeDetalles($viaje, $conductor);
     }
 

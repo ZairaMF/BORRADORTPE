@@ -11,25 +11,28 @@
             <label for="origen">Origen</label>
             <input type="text" id="origen" name="origen" required>
         </div>
+
         <div class="col1">
             <label for="destino">Destino</label>
             <input type="text" id="destino" name="destino" required>
         </div>
+
         <div class="col1">
             <label for="ID_conductor">Conductor</label>
-    <select name="ID_conductor" id="ID_conductor" required>
-        <option value="">-- Seleccionar Conductor --</option>
-        <?php foreach ($conductores as $conductor): ?>
-            <option value="<?= $conductor->ID_conductor ?>">
-                <?= htmlspecialchars($conductor->nombre) ?> — <?= htmlspecialchars($conductor->vehiculo) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+            <select name="ID_conductor" id="ID_conductor" required>
+                <option value="">-- Seleccionar Conductor --</option>
+                <?php foreach ($conductores as $conductor): ?>
+                    <option value="<?= $conductor->ID_conductor ?>">
+                        <?= htmlspecialchars($conductor->nombre) ?> — <?= htmlspecialchars($conductor->vehiculo) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
+
+        <input type="hidden" name="ID_usuario" value="1"> <!-- o el id real del usuario logueado -->
+
         <div class="col1">
             <button type="submit">Agregar Viaje</button>
         </div>
-
-</div>
-</form>
+    </form>
 </div>
