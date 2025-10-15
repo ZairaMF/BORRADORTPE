@@ -30,15 +30,29 @@ switch ($params[0]) {
     $controller->addViaje();
     break;
 
+    //Edita el viaje por ID
     case 'editarViaje':
         $controller = new TaskController();
         $controller->mostrarformEditViaje($params[1]);
         break;
+    // Toma los datos pero no muestra nada
     case 'update':
         $controller = new TaskController();
         $controller->updateViajes($params[1]);
         break;
 
+
+    //Elimina viaje
+    case 'eliminar':
+        $controller = new TaskController($res); 
+        $controller->eliminarViaje($params[1]);
+        break;
+    
+    //Ver mas detalles
+    case 'verMasViajes':
+        $controller = new TaskController();
+        $controller->mostrarViaje($params[1]);
+        break;
     default: 
         echo "404 Page Not Found";
         break;

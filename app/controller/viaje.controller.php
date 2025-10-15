@@ -25,6 +25,18 @@ class TaskController
         $this->view->verViajes($viajes);
     }
 
+    public function mostrarViaje($ID_viaje)
+    {
+        $viaje = $this->model->getViajeById($ID_viaje);
+    
+        if (!$viaje) {
+            return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $ID_viaje");
+        }
+        $ID_conductor = $viaje->ID_conductor;
+        $conductor = $this->model->verConductorById($ID_conductor);
+       return $this->view->viajeDetalles($viaje, $conductor);
+    }
+
     public function mostrarformViajes()
     {
         $conductorModel = new conductorModel();
@@ -104,4 +116,18 @@ class TaskController
            // redirijo al home
         header('Location: ' . BASE_URL . 'listar');
     }
+ 
+    public function eliminarViaje($ID_viaje){
+    
+        $viaje =$this->model->getViajeById($ID_viaje);
+        $eliminar =  $this->model->eliminarViaje($ID_viaje);
+        if($viaje && !$eliminar){
+    
+            header('Location: ' . BASE_URL . 'listar'); 
+        } else {
+            return $this->view->mostrarErrores("No se pudo eliminar el viaje.");
+        }    
+    
+    }
+    
 }
