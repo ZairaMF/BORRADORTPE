@@ -30,6 +30,14 @@ switch ($params[0]) {
     $controller->addViaje();
     break;
 
+    case 'editarViaje':
+        $controller = new TaskController();
+        $controller->mostrarformEditViaje($params[1]);
+        break;
+    case 'update':
+        $controller = new TaskController();
+        $controller->updateViajes($params[1]);
+        break;
 
     default: 
         echo "404 Page Not Found";

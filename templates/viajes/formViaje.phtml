@@ -1,12 +1,11 @@
-
 <div>
     <h3>Agregar Nuevo Viaje</h3>
     <form action="<?= BASE_URL ?>agregarViaje" method="POST" novalidate>
-    <div class="col1">
+        <div class="col1">
             <label for="fecha">Fecha de Viaje</label>
             <input type="date" id="fecha" name="fecha" required>
         </div>
-       
+
         <div class="col1">
             <label for="origen">Origen</label>
             <input type="text" id="origen" name="origen" required>
@@ -15,18 +14,18 @@
             <label for="destino">Destino</label>
             <input type="text" id="destino" name="destino" required>
         </div>
-       <div class="col1">
-      <label for="ID_conductor">Conductores:</label>
+        <div class="col1">
+            <label for="ID_conductor">Conductores:</label>
             <select name="ID_conductor" required>
-             <?php foreach ($conductor as $c): ?>
-    <option value="<?= $c->ID_conductor ?>"><?= $c->nombre ?> - <?= $c->vehiculo ?></option>
-<?php endforeach; ?>
+                <?php foreach ($conductor as $c): ?>
+                    <option value="<?= $c->ID_conductor ?>"><?= $c->nombre ?> - <?= $c->vehiculo ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         <div class="col1">
             <button type="submit">Agregar Viaje</button>
         </div>
-            
-        </div>
-    </form>
+
+</div>
+</form>
 </div>

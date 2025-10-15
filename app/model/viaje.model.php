@@ -21,10 +21,10 @@ function getViaje() {
     return $viaje;
 }
 
-function getViajeById(){
+function getViajeById($ID_viaje){
 
     $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
-    $query->execute();
+    $query->execute([$ID_viaje]);
 
     $viaje = $query->fetch(PDO::FETCH_OBJ);
 
@@ -37,10 +37,10 @@ function agregarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario){
     return $this->db->lastInsertId();
 }
 
-function editarViaje($fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario){
-    $query = $this->db->prepare('UPDATE viaje SET `fecha` = ? , `origen` = ?, `destino` = ? WHERE `ID_viaje` = ?');
-    $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje]);
-    }
+public function editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_viaje, $ID_usuario) {
+    $query = $this->db->prepare('UPDATE viaje SET fecha = ?, origen = ?, destino = ?, ID_conductor = ?, ID_usuario = ? WHERE ID_viaje = ?');
+    return $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje]);
+}
 
 function eliminarViaje($ID_viaje) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
@@ -55,5 +55,12 @@ function eliminarViaje($ID_viaje) {
     $conductor = $query->fetchAll(PDO::FETCH_OBJ);
 
     return $conductor;
+}
+function getConductorById($ID_conductor){
+     $query = $this->db->prepare('SELECT * FROM conductor WHERE ID_conductor = ?');
+        $query->execute([$ID_conductor]);
+        $conductor = $query->fetch(PDO::FETCH_OBJ);
+
+        return $conductor;
 }
 }
