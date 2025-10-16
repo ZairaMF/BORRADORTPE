@@ -1,0 +1,170 @@
+/* === FORMULARIO AGREGAR VIAJE === */
+
+form {
+    background: #524f4f;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #06d6a0;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+}
+
+/* Campos del formulario */
+.col1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+/* Inputs y selects */
+input[type="text"],
+input[type="date"],
+select {
+    background: #222;
+    color: #fff;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: #06d6a0;
+    box-shadow: 0 0 5px #06d6a0;
+}
+
+/* Botón */
+button {
+    background: #06d6a0;
+    color: #000;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: #04b585;
+    transform: translateY(-2px);
+}
+
+/* Para el select de conductor */
+select {
+    appearance: none;
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #06d6a0 50%), 
+                      linear-gradient(135deg, #06d6a0 50%, transparent 50%);
+    background-position: calc(100% - 15px) calc(1em + 2px), 
+                         calc(100% - 10px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* Espaciado general del contenedor */
+div h3 + form {
+    margin-top: 1rem;
+}
+
+/* Header */
+.site-header {
+    background: linear-gradient(90deg, #000000, #222222);
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.header-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.logo span {
+    color: #06d6a0;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.navbar a:hover {
+    color: #06d6a0;
+}
+
+/* Footer */
+.site-footer {
+    background: #111;
+    color: #eee;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    font-family: Arial, sans-serif;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 2rem;
+    gap: 6rem;
+}
+.footer-info, .footer-links {
+    flex: 1 1 45%;
+    margin-bottom: 1.5rem;
+}
+.footer-info h3, .footer-links h4 {
+    color: #06d6a0;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li {
+    margin: 0.5rem 0;
+}
+.footer-links a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #06d6a0;
+}
+.footer-bottom {
+    background: #000;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #bbb;
+}

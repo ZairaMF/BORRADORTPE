@@ -1,17 +1,12 @@
 <?php
 
 class AuthView {
-    private $user = null;
-    public function __construct($user=null) {
-        $this->user = $user;
+
+    public function showLogin($error, $nombre) {
+        require_once './templates/form_login.phtml';
     }
 
-
-    public function showLogin($error = '') {
-        require 'templates/form_login.phtml';
+    public function showError($error, $nombre) {
+        echo "<h1>$error</h1>";
     }
-
-    /*public function showSignup($error = '') {
-        require 'templates/form_signup.phtml';
-    }*/
 }

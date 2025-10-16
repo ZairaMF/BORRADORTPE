@@ -3,6 +3,10 @@
     require './app/controller/conductor.controller.php';
     require './app/controller/auth.controller.php';
 
+    require_once './app/middlewares/session.middleware.php';
+    require_once './app/middlewares/guard.middleware.php';
+
+
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -14,7 +18,8 @@
     
     // parsea la accion para separar accion real de parametros
     $params = explode('/', $action);
-    //$res = new Response();
+    $request = new StdClass();
+    $request = (new SessionMiddleware())->run($request);
 
     switch ($params[0]) {
     case 'listar':
@@ -57,19 +62,21 @@
             $controller = new TaskController();
             $controller->mostrarViaje($params[1]);
             break;
-        /*case 'showLogin':
-            $controller = new AuthController($res);
-            $controller->showLogin();
-            break;
+            
         case 'login':
-            $controller = new AuthController($res);
-            $controller->login();
-            break;
-        case 'logout':
-            $controller = new AuthController($res);
-            $controller->logout();
-            break;
-    */
+        $controller = new AuthController();
+        $controller->showLogin($request);
+        break;
+    case 'do_login':
+        $controller = new AuthController();
+        $controller->doLogin($request);
+        break;
+    case 'logout':
+        $request = (new GuardMiddleware())->run($request);
+        $controller = new AuthController();
+        $controller->logout($request);
+        break;
+
         default: 
             echo "404 Page Not Found";
             break;

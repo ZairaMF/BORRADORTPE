@@ -1,20 +1,46 @@
 <?php
-class UserModel{
-    //abre conexion a la base de datos
-    private function connect(){
-        $db = new PDO('mysql:host=localhost;dbname=uber_viaje;charset=utf8', 'root', '');
-        return $db;
+
+class UserModel {
+    private $db;
+
+    function __construct() {
+     // 1. abro conexión con la DB
+     $this->db = new PDO('mysql:host=localhost;dbname=uber_viajes;charset=utf8', 'root', '');
     }
 
-    //Obtiene y devuelve de la base de datos todas las tareas.
-    function getUserByGmail($gmail) {
-        $db = $this->connect();
-        $query = $db->prepare('SELECT * FROM usuario WHERE gmail = ?');
-        $query->execute([$gmail]);
+    public function get($ID_usuario) {
+        $query = $this->db->prepare('SELECT * FROM usuario WHERE ID_usuario = ?');
+        $query->execute([$ID_usuario]);
+        $usuario = $query->fetch(PDO::FETCH_OBJ);
 
-        // $tasks es un arreglo de tareas
-        return $query->fetch(PDO::FETCH_OBJ);
-
+        return $usuario;
     }
 
+    public function getByUser($nombre) {
+        $query = $this->db->prepare('SELECT * FROM usuario WHERE nombre = ?');
+        $query->execute([$nombre]);
+        $nombre = $query->fetch(PDO::FETCH_OBJ);
+
+        return $nombre;
+    }
+    
+    public function getAll() {
+        // 2. ejecuto la consulta SQL (SELECT * FROM tareas)
+        $query = $this->db->prepare('SELECT * FROM usuario');
+        $query->execute();
+
+        // 3. obtengo los resultados de la consulta
+        $usuario = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $usuario;
+    }
+
+    function insert($nombre, $password, $email) {
+        $query = $this->db->prepare("INSERT INTO usuario(usuario, password, email) VALUES(?,?, ?)");
+        $query->execute([$nombre, $password, $email]);
+
+        // var_dump($query->errorInfo());
+
+        return $this->db->lastInsertId();
+    }
 }
