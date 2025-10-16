@@ -6,7 +6,7 @@
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-    $action = 'home'; // accion por defecto si no se envia ninguna
+    $action = 'listar'; // accion por defecto si no se envia ninguna
     if (!empty( $_GET['action'])) {
         $action = $_GET['action'];
     }

@@ -14,14 +14,17 @@ class TaskController
         $this->view = new viajeView();
     }
 
-    function listarViajes()
-    {
-        // pido las tareas al modelo
-        $viajes = $this->model->getViaje();
+   function listarViajes()
+{
+    $viajes = $this->model->getViaje();
+    //Consulta datos en conductor model, asignandolo a la variable
+    $conductorModel = new conductorModel();
+    //Llama a metodo
+    $conductores = $conductorModel->getConductor();
 
-        // se las mando a la vista
-        $this->view->verViajes($viajes);
-    }
+    $this->view->verViajes($viajes, $conductores);
+}
+
 
     public function mostrarViaje($ID_viaje)
     {
