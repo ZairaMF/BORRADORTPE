@@ -2,7 +2,7 @@
 <?php 
 class viajeView{
 
-    function verViajes($viajes){
+    function verViajes($viajes, $conductores){
         require_once 'templates/viajes/viajelista.phtml';
     }
     function formularioViaje($conductores){
